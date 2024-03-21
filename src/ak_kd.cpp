@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Aoi WATANABE
+ * Copyright (c) 2024 WATANABE Aoi
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -12,7 +12,7 @@
 
 
 void print_help(void) {
-  printf("ak_torq [val]\n");
+  printf("ak_pose [val]\n");
   printf("\t[val]: float value to convert u16 packet as hex\n");
   return;
 }
@@ -39,12 +39,12 @@ int main(int argc, char **argv)
     return EXIT_FAILURE;
   }
 
-  if (in < ak::T_MIN || in > ak::T_MAX) {
-    printf("error: intput %.2f out of range %.2f - %.2f\n", in, ak::T_MIN, ak::T_MAX);
+  if (in < ak::Kd_MIN || in > ak::Kd_MAX) {
+    printf("error: input %.2f out of range %.2f - %.2f\n", in, ak::Kd_MIN, ak::Kd_MAX);
     return EXIT_FAILURE;
   }
 
-  const uint16_t out = ak::f2u(in, ak::T_MIN, ak::T_MAX, 12);
+  const uint16_t out = ak::f2u(in, ak::Kd_MIN, ak::Kd_MAX, 12);
   printf("0x%03X\n", out);
   return EXIT_SUCCESS;
 }
